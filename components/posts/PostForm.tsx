@@ -43,7 +43,7 @@ export default function PostForm({ userId }: { userId: number }) {
   };
 
   return (
-    <div className="border rounded-lg p-6 bg-white shadow-sm">
+    <div className="border rounded-lg p-6  shadow-sm">
       <h2 className="text-lg font-semibold mb-4">Add New Post</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <div>

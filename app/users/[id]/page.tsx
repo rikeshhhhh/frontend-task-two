@@ -5,9 +5,11 @@ import Link from "next/link";
 export default async function UserPostsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const userId = Number(params.id);
+  const { id } = await params;
+  const userId = Number(id);
+
   const [posts, users] = await Promise.all([
     fetchPostsByUser(userId),
     fetchUsers(),
