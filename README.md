@@ -144,25 +144,9 @@ Zustand store (`store/useAppStore.ts`) manages:
 
 ---
 
-## 📝 Git Commit History
-
-```
-feat: setup types and folder structure
-feat: add zustand store and api helpers
-feat: user list page with SSR and search
-feat: user posts page with pagination
-feat: add post form with zod validation
-feat: loading and error states
-feat: update home page with dashboard entry point
-fix: await params in dynamic route for Next.js 15
-feat: update global styles
-```
-
----
-
 ## 👤 Author
 
-> Add your name here
+> Rikesh Shrestha
 
 ---
 
