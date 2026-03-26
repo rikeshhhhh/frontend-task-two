@@ -1,36 +1,169 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# User & Posts Dashboard
 
-## Getting Started
+A full-featured User & Posts Dashboard built with **Next.js 15**, **TypeScript**, and **Zustand** as part of the Vrit Technologies & Skill Shikshya frontend interview assignment.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Live Demo
+
+> [https://frontend-task-two-beta.vercel.app/]
+
+## 📁 GitHub Repository
+
+> [https://github.com/rikeshhhhh/frontend-task-two]
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology              | Purpose                                           |
+| ----------------------- | ------------------------------------------------- |
+| Next.js 15 (App Router) | React framework — SSR, routing, server components |
+| TypeScript              | Type safety across all components                 |
+| Tailwind CSS            | Utility-first responsive styling                  |
+| Zustand                 | Global state management                           |
+| Zod                     | Schema-based form validation                      |
+| React Hook Form         | Form handling with Zod resolver                   |
+| JSONPlaceholder API     | Dummy users and posts data                        |
+
+---
+
+## ✨ Features
+
+- **User List Page** — Fetches 10 users via SSR (Server Components), displays name, email, and company
+- **Search / Filter** — Real-time client-side filtering by name or email, no API calls
+- **User Posts Page** — Dynamic route `/users/[id]` showing all posts for a selected user
+- **Pagination** — 5 posts per page with numbered navigation buttons
+- **Add New Post Form** — Validated form with Zod, stores posts in localStorage and Zustand
+- **Loading States** — Next.js `loading.tsx` with spinner per route segment
+- **Error States** — Next.js `error.tsx` with friendly error message per route segment
+
+---
+
+## 📂 Folder Structure
+
+```
+task-two/
+├── app/
+│   ├── page.tsx                  # Home page
+│   ├── layout.tsx                # Root layout
+│   └── users/
+│       ├── page.tsx              # User list page (SSR)
+│       ├── loading.tsx           # Loading state
+│       ├── error.tsx             # Error state
+│       └── [id]/
+│           ├── page.tsx          # User posts page (SSR)
+│           ├── loading.tsx       # Loading state
+│           └── error.tsx         # Error state
+├── components/
+│   ├── ui/
+│   │   ├── Spinner.tsx           # Reusable loading spinner
+│   │   └── ErrorMessage.tsx      # Reusable error message
+│   ├── users/
+│   │   ├── UserList.tsx          # User list with search logic
+│   │   ├── UserCard.tsx          # Single user card
+│   │   └── SearchBar.tsx         # Search input component
+│   └── posts/
+│       ├── PostsClient.tsx       # Posts page client wrapper
+│       ├── PostCard.tsx          # Single post card
+│       ├── PostForm.tsx          # Add new post form
+│       └── Pagination.tsx        # Pagination controls
+├── lib/
+│   ├── api.ts                    # All fetch functions
+│   └── validations.ts            # Zod schemas
+├── store/
+│   └── useAppStore.ts            # Zustand store
+└── types/
+    └── index.ts                  # TypeScript interfaces
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+- Node.js 18+
+- npm or yarn
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Clone the repository
+git clone https://github.com/your-username/task-two.git
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Navigate into the project
+cd task-two
 
-## Deploy on Vercel
+# Install dependencies
+npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Start the development server
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 🗂️ API Endpoints Used
+
+| Function               | Endpoint                 |
+| ---------------------- | ------------------------ |
+| `fetchUsers()`         | `GET /users`             |
+| `fetchPostsByUser(id)` | `GET /posts?userId={id}` |
+
+Base URL: `https://jsonplaceholder.typicode.com`
+
+---
+
+## 📦 State Management
+
+Zustand store (`store/useAppStore.ts`) manages:
+
+- `users` — list of all users
+- `posts` — list of posts (API + locally added)
+- `apiIsLoading` — boolean loading flag
+- `error` — nullable error message
+
+---
+
+## ✅ Requirements Checklist
+
+- [x] User list with name, email, company name
+- [x] View Posts button navigating to `/users/[id]`
+- [x] Search bar filtering by name and email (instant, client-side)
+- [x] Loading state — `Loading users...`
+- [x] Error state — `Something went wrong`
+- [x] Add new post form with title and body
+- [x] Zod form validation
+- [x] Zustand state management
+- [x] SSR using Next.js Server Components
+- [x] Pagination for posts
+- [x] localStorage persistence for new posts
+
+---
+
+## 📝 Git Commit History
+
+```
+feat: setup types and folder structure
+feat: add zustand store and api helpers
+feat: user list page with SSR and search
+feat: user posts page with pagination
+feat: add post form with zod validation
+feat: loading and error states
+feat: update home page with dashboard entry point
+fix: await params in dynamic route for Next.js 15
+feat: update global styles
+```
+
+---
+
+## 👤 Author
+
+> Add your name here
+
+---
+
+_Built for Vrit Technologies & Skill Shikshya — Frontend Interview Assignment_
