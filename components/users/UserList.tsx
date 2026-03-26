@@ -21,13 +21,36 @@ export default function UserList({ initialUsers }: { initialUsers: User[] }) {
   );
 
   return (
-    <div>
+    <div className="space-y-4">
       <SearchBar query={query} onChange={setQuery} />
-      <div className="grid gap-4 mt-6">
+      <p
+        className="text-xs"
+        style={{
+          color: "var(--text-muted)",
+          fontFamily: "'DM Mono', monospace",
+        }}
+      >
+        {filtered.length} result{filtered.length !== 1 ? "s" : ""}
+        {query && ` for "${query}"`}
+      </p>
+
+      <div className="space-y-3">
         {filtered.length === 0 ? (
-          <p className="text-gray-500">No users found.</p>
+          <div
+            className="py-16 text-center rounded-xl border"
+            style={{
+              borderColor: "var(--border)",
+              background: "var(--surface)",
+            }}
+          >
+            <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+              No users match your search.
+            </p>
+          </div>
         ) : (
-          filtered.map((user) => <UserCard key={user.id} user={user} />)
+          filtered.map((user, i) => (
+            <UserCard key={user.id} user={user} index={i} />
+          ))
         )}
       </div>
     </div>

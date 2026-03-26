@@ -48,7 +48,6 @@ task-two/
 │   ├── page.tsx                  # Home page
 │   ├── layout.tsx                # Root layout
 │   └── users/
-│       ├── page.tsx              # User list page (SSR)
 │       ├── loading.tsx           # Loading state
 │       ├── error.tsx             # Error state
 │       └── [id]/
@@ -74,7 +73,9 @@ task-two/
 ├── store/
 │   └── useAppStore.ts            # Zustand store
 └── types/
-    └── index.ts                  # TypeScript interfaces
+|   └── index.ts                  # TypeScript interfaces
+└── constants/
+    └── index.ts                  # Constants Variable
 ```
 
 ---
