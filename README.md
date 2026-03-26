@@ -91,7 +91,7 @@ task-two/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/task-two.git
+git clone https://github.com/rikeshhhhh/frontend-task-two
 
 # Navigate into the project
 cd task-two

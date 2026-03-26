@@ -5,10 +5,14 @@ import { useAppStore } from "../../store/useAppStore";
 import { User } from "../../types";
 import UserCard from "./UserCard";
 import SearchBar from "./SearchBar";
+import Pagination from "../posts/Pagination";
 
 export default function UserList({ initialUsers }: { initialUsers: User[] }) {
   const { users, setUsers } = useAppStore();
   const [query, setQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const usersPerPage = 5;
 
   useEffect(() => {
     setUsers(initialUsers);
@@ -20,9 +24,19 @@ export default function UserList({ initialUsers }: { initialUsers: User[] }) {
       u.email.toLowerCase().includes(query.toLowerCase()),
   );
 
+  const totalPages = Math.ceil(filtered.length / usersPerPage);
+
+  const startIndex = (currentPage - 1) * usersPerPage;
+  const paginatedUsers = filtered.slice(startIndex, startIndex + usersPerPage);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [query]);
+
   return (
     <div className="space-y-4">
       <SearchBar query={query} onChange={setQuery} />
+
       <p
         className="text-xs"
         style={{
@@ -48,11 +62,19 @@ export default function UserList({ initialUsers }: { initialUsers: User[] }) {
             </p>
           </div>
         ) : (
-          filtered.map((user, i) => (
+          paginatedUsers.map((user, i) => (
             <UserCard key={user.id} user={user} index={i} />
           ))
         )}
       </div>
+
+      {filtered.length > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
     </div>
   );
 }
