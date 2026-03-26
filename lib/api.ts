@@ -1,4 +1,4 @@
-import { User, Post } from "./types";
+import { User, Post } from "../types";
 
 const BASE_URL = "https://jsonplaceholder.typicode.com";
 

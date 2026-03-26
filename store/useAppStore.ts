@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { User, Post } from "@/types";
+import { User, Post } from "../types";
 
 interface AppState {
   users: User[];
